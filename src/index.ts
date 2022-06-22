@@ -3,14 +3,17 @@ class Person {
   constructor(_age: number) {
     this._age = _age;
   }
-  growOld() {
+  growOld = () => {
     this._age++;
-  }
+  };
   age() {
     return this._age;
   }
 }
 
 const person = new Person(0);
-person.growOld();
-console.log("age: ", person.age());
+// person.growOld();
+const growOld = person.growOld;
+setTimeout(person.growOld, 1000);
+growOld();
+setTimeout(() => console.log("age: ", person.age()), 2000);
