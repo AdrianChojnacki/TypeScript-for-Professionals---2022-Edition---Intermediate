@@ -1,5 +1,7 @@
 //--------------------------------------------- Lexical this
 
+import { NumberLiteralType } from "typescript";
+
 class Person {
   private _age: number;
   constructor(_age: number) {
@@ -241,3 +243,51 @@ class Person2 {
 
 const adam = new Person2("Adam", 120000);
 console.log(adam.name, adam.age); // 'Adam', 120000
+
+//--------------------------------------------- Strict Compiler Option
+
+function add(first: number, second: number) {
+  return second + first;
+}
+
+add(1, 2); // 3
+
+class Point2 {
+  x: number;
+  y: number;
+
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+
+  move(x: number, y: number) {
+    this.x += x;
+    this.y += y;
+  }
+}
+
+// Create
+const point2 = new Point2(0, 0);
+
+// Use
+point2.move(1, 3);
+console.log(point2.x, point2.y); // 1, 3
+
+type User = {
+  name: string;
+  age: number;
+};
+
+const users: User[] = [
+  { name: "Oby", age: 12 },
+  { name: "Heera", age: 32 },
+];
+
+function getUserAge(name: string): number {
+  const user = users.find(user => user.name === name);
+  if (user == null) {
+    throw new Error(`User not found: ${name}`);
+  }
+  return user.age;
+}
