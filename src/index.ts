@@ -232,3 +232,12 @@ function logResult(result: ValidationResult) {
     console.log("Failure, error reason:", result.errorReason);
   }
 }
+
+//--------------------------------------------- Class Parameter Properties
+
+class Person2 {
+  constructor(public name: string, public age: number) {}
+}
+
+const adam = new Person2("Adam", 120000);
+console.log(adam.name, adam.age); // 'Adam', 120000
