@@ -344,3 +344,40 @@ console.log(decorate("Hello World   ")); // -- Hello World --
 
 console.log(decorate(null)); // null
 console.log(decorate(undefined)); // undefined
+
+//--------------------------------------------- Intersection types
+
+type Point2D = {
+  x: number;
+  y: number;
+};
+
+type Point3D = Point2D & {
+  z: number;
+};
+
+type Person3 = {
+  name: string;
+};
+
+type Email = {
+  email: string;
+};
+
+type Phone = {
+  phone: string;
+};
+
+type ContactDetails = Person3 & Email & Phone;
+
+function contact(details: ContactDetails) {
+  console.log(`Dear ${details.name}.
+  I hope you received our email at ${details.email}.
+  We will call you at ${details.phone} shortly.`);
+}
+
+contact({
+  name: "John",
+  email: "howdy@example.com",
+  phone: "1337",
+});
