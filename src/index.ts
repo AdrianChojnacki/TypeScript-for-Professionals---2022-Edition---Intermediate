@@ -500,3 +500,52 @@ export type InputProps2 = {
   value: InputValue;
   onChange: InputOnChange;
 };
+
+//--------------------------------------------- never type
+
+const fail = (message: string) => {
+  throw new Error(message);
+};
+
+const sing = function () {
+  while (true) {
+    console.log("Never gonna give you up");
+    console.log("Never gonna let you down");
+    console.log("Never gonna run around and desert you");
+    console.log("Never gonna make you cry");
+    console.log("Never gonna say goodbye");
+    console.log("Never gonna tell a lie and hurt you");
+  }
+};
+
+let example: never = 123;
+
+type Square3 = {
+  kind: "square";
+  size: number;
+};
+
+type Rectangle3 = {
+  kind: "rectangle";
+  width: number;
+  height: number;
+};
+
+type Circle2 = {
+  kind: "circle";
+  radius: number;
+};
+
+type Shape3 = Square3 | Rectangle3 | Circle2;
+
+function area3(s: Shape3) {
+  if (s.kind === "square") {
+    return s.size * s.size;
+  } else if (s.kind === "rectangle") {
+    return s.width * s.height;
+  } else if (s.kind === "circle") {
+    return Math.PI * s.radius ** 2;
+  }
+  const _ensureAllCasesAreHandled: never = s;
+  return _ensureAllCasesAreHandled;
+}
