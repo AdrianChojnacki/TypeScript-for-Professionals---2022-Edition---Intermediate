@@ -381,3 +381,37 @@ contact({
   email: "howdy@example.com",
   phone: "1337",
 });
+
+//--------------------------------------------- Optional modifier
+
+type Person4 = {
+  name: string;
+  email: string;
+  phone?: string;
+};
+
+const bruce: Person4 = {
+  name: "Bruce",
+  email: "belt@example.com",
+  phone: "911",
+};
+
+const alfred: Person4 = {
+  name: "Alfred",
+  email: "alfred@example.com",
+};
+
+console.log(alfred.phone); // undefined
+
+class Point4 {
+  x?: number | null;
+  y?: number;
+}
+
+const point3 = new Point4();
+
+console.log(point3.x); // undefined
+
+point3.x = 0;
+point3.x = undefined;
+point3.x = null;
