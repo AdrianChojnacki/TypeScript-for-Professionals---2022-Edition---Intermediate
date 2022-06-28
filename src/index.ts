@@ -415,3 +415,32 @@ console.log(point3.x); // undefined
 point3.x = 0;
 point3.x = undefined;
 point3.x = null;
+
+//--------------------------------------------- Non-null Assertion Operator
+
+class Point5 {
+  x: number;
+  y: number;
+}
+
+function initialize(): Point5 {
+  return { x: 0, y: 0 };
+}
+
+const point4 = initialize();
+console.log("After initialized", point4.x, point4.y);
+
+type Person5 = {
+  name: string;
+  email?: string | null | undefined;
+};
+
+function sendEmail(email: string) {
+  console.log("Sent email to", email);
+}
+
+function contact2(person: Person5) {
+  if (person.email == null)
+    throw new Error(`Person ${person.name} is not contactable`);
+  sendEmail(person.email!);
+}
