@@ -444,3 +444,20 @@ function contact2(person: Person5) {
     throw new Error(`Person ${person.name} is not contactable`);
   sendEmail(person.email!);
 }
+
+//--------------------------------------------- Interfaces
+
+interface Point2D2 {
+  x: number;
+  y: number;
+}
+
+interface Point3D2 extends Point2D2 {
+  z: number;
+}
+
+export const point5: Point3D2 = {
+  x: 0,
+  y: 0,
+  z: 0,
+};
