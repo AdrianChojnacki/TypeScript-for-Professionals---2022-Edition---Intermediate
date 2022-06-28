@@ -1,5 +1,6 @@
 //--------------------------------------------- Lexical this
 
+import { json } from "stream/consumers";
 import { NumberLiteralType } from "typescript";
 
 class Person {
@@ -461,3 +462,21 @@ export const point5: Point3D2 = {
   y: 0,
   z: 0,
 };
+
+//--------------------------------------------- Interface Declaration Merging
+
+// Express Base
+export interface Request {
+  body: any;
+}
+
+// Express JSON
+export interface Request {
+  json: any;
+}
+
+// Our App
+function handleRequest(req: Request) {
+  req.body;
+  req.json;
+}
